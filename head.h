@@ -4,20 +4,20 @@
 struct Leaf {
   char letra;
   int qtd;
-  struct Leaf* next;
+  struct Leaf *next;
+  struct Leaf *right, *left;
 };
 
-struct Tree {
-  int soma;
-  struct Tree* right, struct Tree* left;
-}
-
 typedef struct Leaf* node;
-typedef struct Tree* tree;
 
 node create_node(char letra);
 void insert_into_list(node* dict, char letra);
 void mostrar(node dict);
 FILE* abrir_arquivo(char *arquivo);
+node min_in_dict(node* dict);
+
+// Tree functions
+node leaf_to_tree(node first, node second);
+int soma_leaf(node n1, node n2);
 
 #endif
