@@ -4,9 +4,9 @@
 
 node leaf_to_tree(node first, node second) {
   node root = (node) malloc(sizeof(struct Leaf));
-  root->soma = soma_nos(first, second);
-  root->left = *first;
-  root->right = *second;
+  root->left = first;
+  root->right = second;
+  root->qtd = soma_leaf(first, second);
   root->letra = NULL;
   root->next = NULL;
   return root;
