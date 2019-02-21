@@ -15,9 +15,11 @@ void insert_into_list(node* dict, char letra);
 void mostrar(node dict);
 FILE* abrir_arquivo(char *arquivo);
 node min_in_dict(node* dict);
+void insert_final(node* dict, node new);
 
 // Tree functions
 node leaf_to_tree(node first, node second);
 int soma_leaf(node n1, node n2);
+node create_tree(node* dict);
 
 #endif

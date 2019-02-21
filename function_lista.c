@@ -14,7 +14,6 @@ FILE* abrir_arquivo(char *arquivo) {
 node create_node(char letra) {
   node aux = (node) malloc(sizeof(struct Leaf));
   aux->letra = letra;
-  printf("%d", letra);
   aux->qtd = 1;
   aux->next = NULL;
   printf("Nó criado de %c\n", letra);
@@ -61,5 +60,12 @@ node min_in_dict(node* dict) {
     ant->next = min->next;
   }
   min->next = NULL;
+  printf("Minimo eh %c - %d\n", min->letra, min->qtd);
   return min;
+}
+
+void insert_final(node* dict, node new) {
+  while((*dict)->next != NULL)
+    *dict = (*dict)->next;
+  (*dict)->next = new;
 }

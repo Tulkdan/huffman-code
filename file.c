@@ -18,6 +18,10 @@ int main(int argc, char **argv) {
   }
   mostrar(dict);
 
+  create_tree(&dict);
+
+  mostrar(dict);
+
   fclose(file);
 
   return 0;
