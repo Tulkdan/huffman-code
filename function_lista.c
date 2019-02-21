@@ -12,7 +12,7 @@ FILE* abrir_arquivo(char *arquivo) {
 }
 
 node create_node(char letra) {
-  node aux = (node) malloc(sizeof(struct Node));
+  node aux = (node) malloc(sizeof(struct Leaf));
   aux->letra = letra;
   printf("%d", letra);
   aux->qtd = 1;

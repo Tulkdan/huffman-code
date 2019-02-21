@@ -1,13 +1,19 @@
 #ifndef HEADER
 #define HEADER
 
-struct Node {
+struct Leaf {
   char letra;
   int qtd;
-  struct Node* next;
+  struct Leaf* next;
 };
 
-typedef struct Node* node;
+struct Tree {
+  int soma;
+  struct Tree* right, struct Tree* left;
+}
+
+typedef struct Leaf* node;
+typedef struct Tree* tree;
 
 node create_node(char letra);
 void insert_into_list(node* dict, char letra);
