@@ -43,3 +43,23 @@ void mostrar(node dict) {
     printf("%d\n", dict->qtd);
   }
 }
+
+node min_in_dict(node* dict) {
+  node aux = *dict;
+  node ant = aux;
+  node min = aux;
+  while(aux != NULL) {
+    if (aux->qtd < min->qtd) {
+      ant = min;
+      min = aux;
+    }
+    aux = aux->next;
+  }
+  if (ant == min) {
+    *dict = min->next;
+  } else {
+    ant->next = min->next;
+  }
+  min->next = NULL;
+  return min;
+}
