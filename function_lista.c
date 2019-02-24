@@ -16,6 +16,7 @@ node create_node(char letra) {
   aux->letra = letra;
   aux->qtd = 1;
   aux->next = NULL;
+  aux->rear = NULL;
   printf("Nó criado de %c\n", letra);
   return aux;
 }
@@ -25,13 +26,14 @@ void insert_into_list(node* dict, char letra) {
   while(aux != NULL) {
     if (aux->letra == letra) {
       aux->qtd++;
-      // printf("Letra %c incrementada\n", letra);
       return;
     }
     aux = aux->next;
   }
   aux = create_node(letra);
   aux->next = *dict;
+  if (*dict != NULL)
+    (*dict)->rear = aux;
   *dict = aux;
 }
 
@@ -43,29 +45,50 @@ void mostrar(node dict) {
   }
 }
 
+int count_elements(node dict) {
+  int i = 0;
+  while(dict != NULL) {
+    i++;
+    dict = dict->next;
+  }
+  return i;
+}
+
 node min_in_dict(node* dict) {
   node aux = *dict;
-  node ant = aux;
   node min = aux;
-  while(aux != NULL) {
+  while(aux != NULL && aux->next != NULL) {
     if (aux->qtd < min->qtd) {
-      ant = min;
       min = aux;
     }
     aux = aux->next;
   }
-  if (ant == min) {
+  if (min->rear == NULL) {
     *dict = min->next;
+    if (*dict != NULL)
+      (*dict)->rear = NULL;
   } else {
-    ant->next = min->next;
+    min->rear->next = min->next;
+    min->next->rear = min->rear;
   }
   min->next = NULL;
+  min->rear = NULL;
   printf("Minimo eh %c - %d\n", min->letra, min->qtd);
   return min;
 }
 
 void insert_final(node* dict, node new) {
-  while((*dict)->next != NULL)
-    *dict = (*dict)->next;
-  (*dict)->next = new;
+  node inicio = *dict;
+  while(inicio != NULL && inicio->next != NULL)
+    inicio = inicio->next;
+
+  if (inicio == NULL) {
+    *dict = new;
+    (*dict)->rear = NULL;
+    (*dict)->next = NULL;
+  } else {
+    inicio->next = new;
+    new->rear = inicio;
+    new->next = NULL;
+  }
 }
