@@ -78,6 +78,11 @@ node min_in_dict(node* dict) {
 }
 
 void insert_final(node* dict, node new) {
+  if (count_elements(*dict) == 0) {
+    *dict = new;
+    return;
+  }
+
   node inicio = *dict;
   while(inicio != NULL && inicio->next != NULL)
     inicio = inicio->next;

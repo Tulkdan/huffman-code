@@ -20,9 +20,9 @@ int main(int argc, char **argv) {
 
   create_tree(&dict);
 
-  printf("Arvore criada\n");
-
   show_tree(dict);
+
+  printf("Arvore criada\n");
 
   fclose(file);
 

@@ -21,7 +21,8 @@ int count_elements(node dict);
 // Tree functions
 node leaf_to_tree(node first, node second);
 int soma_leaf(node n1, node n2);
-node create_tree(node* dict);
+void create_tree(node* dict);
 void show_tree(node tree);
+int is_leaf(node tree);
 
 #endif
