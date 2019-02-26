@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "head.h"
 
 node leaf_to_tree(node first, node second) {
@@ -17,16 +18,23 @@ int soma_leaf(node n1, node n2) {
   return (n1->qtd + n2->qtd);
 }
 
-void show_tree(node tree) {
-  // TODO: add new representation for the letter
+void show_tree(node tree, char repr[]) {
   if (is_leaf(tree)) {
-    printf("%c - %d\n", tree->letra, tree->qtd);
+    printf("%c - %d - %s\n", tree->letra, tree->qtd, repr);
+    return;
   }
   if (tree->left != NULL) {
-    show_tree(tree->left);
+    char aux[10];
+    strcpy(aux, repr);
+    show_tree(tree->left, strcat(repr, "0"));
+    strcpy(repr, aux);
   }
-  if (tree->right != NULL)
-    show_tree(tree->right);
+  if (tree->right != NULL) {
+    char aux[10];
+    strcpy(aux, repr);
+    show_tree(tree->right, strcat(repr, "1"));
+    strcpy(repr, aux);
+  }
 }
 
 void create_tree(node* dict) {

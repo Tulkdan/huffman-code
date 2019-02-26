@@ -3,6 +3,7 @@
 
 struct Leaf {
   char letra;
+  char repr[10];
   int qtd;
   struct Leaf *next, *rear;
   struct Leaf *right, *left;
@@ -22,7 +23,7 @@ int count_elements(node dict);
 node leaf_to_tree(node first, node second);
 int soma_leaf(node n1, node n2);
 void create_tree(node* dict);
-void show_tree(node tree);
+void show_tree(node tree, char repr[]);
 int is_leaf(node tree);
 
 #endif

@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
     exit(1);
   }
   node dict = NULL;
-  char ch;
+  char ch, repr[10];
   FILE *file;
 
   file = abrir_arquivo(argv[1]);
@@ -20,7 +20,7 @@ int main(int argc, char **argv) {
 
   create_tree(&dict);
 
-  show_tree(dict);
+  show_tree(dict, repr);
 
   printf("Arvore criada\n");
 
