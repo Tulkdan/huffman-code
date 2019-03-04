@@ -17,7 +17,7 @@ node create_node(char letra) {
   aux->qtd = 1;
   aux->next = NULL;
   aux->rear = NULL;
-  printf("Nó criado de %c\n", letra);
+  // printf("Nó criado de %c\n", letra);
   return aux;
 }
 
@@ -73,7 +73,7 @@ node min_in_dict(node* dict) {
   }
   min->next = NULL;
   min->rear = NULL;
-  printf("Minimo eh %c - %d\n", min->letra, min->qtd);
+  // printf("Minimo eh %c - %d\n", min->letra, min->qtd);
   return min;
 }
 

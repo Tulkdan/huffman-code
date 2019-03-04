@@ -7,22 +7,29 @@ int main(int argc, char **argv) {
     printf("Digite o nome do arquivo!");
     exit(1);
   }
-  node dict = NULL;
+  node tree = NULL;
+  DICT dict = NULL;
   char ch, repr[10];
   FILE *file;
-
   file = abrir_arquivo(argv[1]);
   
   while((ch = fgetc(file)) != EOF) {
-    insert_into_list(&dict, ch);
+    insert_into_list(&tree, ch);
   }
-  mostrar(dict);
+  mostrar(tree);
 
-  create_tree(&dict);
-
-  show_tree(dict, repr);
+  create_tree(&tree);
 
   printf("Arvore criada\n");
+
+  show_tree(tree, repr, &dict);
+
+  printf("Dicionário criado\n");
+
+  // show_dictionary(dict);
+
+  write_in_file(dict);
+  read_bin_file();
 
   fclose(file);
 

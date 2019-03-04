@@ -18,21 +18,23 @@ int soma_leaf(node n1, node n2) {
   return (n1->qtd + n2->qtd);
 }
 
-void show_tree(node tree, char repr[]) {
+void show_tree(node tree, char repr[], DICT* dict) {
   if (is_leaf(tree)) {
-    printf("%c - %d - %s\n", tree->letra, tree->qtd, repr);
+    DICT nodeAux = create_node_dict(tree->letra, repr);
+    insert_into_dictionary(dict, nodeAux);
+    // printf("%c - %d - %s\n", tree->letra, tree->qtd, repr);
     return;
   }
   if (tree->left != NULL) {
     char aux[10];
     strcpy(aux, repr);
-    show_tree(tree->left, strcat(repr, "0"));
+    show_tree(tree->left, strcat(repr, "0"), dict);
     strcpy(repr, aux);
   }
   if (tree->right != NULL) {
     char aux[10];
     strcpy(aux, repr);
-    show_tree(tree->right, strcat(repr, "1"));
+    show_tree(tree->right, strcat(repr, "1"), dict);
     strcpy(repr, aux);
   }
 }

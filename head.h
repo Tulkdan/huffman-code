@@ -3,14 +3,21 @@
 
 struct Leaf {
   char letra;
-  char repr[10];
   int qtd;
   struct Leaf *next, *rear;
   struct Leaf *right, *left;
 };
 
-typedef struct Leaf* node;
+struct Dictionary {
+  char letra;
+  char repr[10];
+  struct Dictionary *next, *rear;
+};
 
+typedef struct Leaf* node;
+typedef struct Dictionary* DICT;
+
+// List functions
 node create_node(char letra);
 void insert_into_list(node* dict, char letra);
 void mostrar(node dict);
@@ -23,7 +30,15 @@ int count_elements(node dict);
 node leaf_to_tree(node first, node second);
 int soma_leaf(node n1, node n2);
 void create_tree(node* dict);
-void show_tree(node tree, char repr[]);
+void show_tree(node tree, char repr[], DICT* dict);
 int is_leaf(node tree);
+
+// Dictionary functions
+DICT create_node_dict(char letra, char repr[]);
+void insert_into_dictionary(DICT* dict, DICT new);
+void show_dictionary(DICT dict);
+void write_in_file(DICT dict);
+void read_bin_file();
+DICT read_dict_from_file(FILE* file);
 
 #endif
