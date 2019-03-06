@@ -37,8 +37,9 @@ int is_leaf(node tree);
 DICT create_node_dict(char letra, char repr[]);
 void insert_into_dictionary(DICT* dict, DICT new);
 void show_dictionary(DICT dict);
-void write_in_file(DICT dict);
+void write_in_file(DICT dict, FILE* arq);
 void read_bin_file();
 DICT read_dict_from_file(FILE* file);
+const char * find_letter_repr(DICT dict, char letter);
 
 #endif

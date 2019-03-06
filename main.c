@@ -16,6 +16,7 @@ int main(int argc, char **argv) {
   while((ch = fgetc(file)) != EOF) {
     insert_into_list(&tree, ch);
   }
+  fclose(file);
   mostrar(tree);
 
   create_tree(&tree);
@@ -28,10 +29,11 @@ int main(int argc, char **argv) {
 
   // show_dictionary(dict);
 
-  write_in_file(dict);
+  file = abrir_arquivo(argv[1]);
+  write_in_file(dict, file);
+  fclose(file);
   read_bin_file();
 
-  fclose(file);
 
   return 0;
 }
