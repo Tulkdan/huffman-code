@@ -1,2 +1,7 @@
 a.out
 teste.*
+
+
+# Added by cargo
+
+/target
